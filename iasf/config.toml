@@ -1,4 +1,4 @@
-baseURL = "http://example.org/"
+baseURL = "http://epicfaace.github.io/iasf/"
 languageCode = "en-us"
-title = "My New Hugo Site"
+title = "Indian American Scholarship Foundation"
 theme = "blank"
