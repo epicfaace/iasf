@@ -2,4 +2,5 @@ baseURL = "http://epicfaace.github.io/iasf/"
 languageCode = "en-us"
 title = "Indian American Scholarship Foundation"
 theme = "blank"
-relativeURLs = true
+relativeURLs = false
+SectionPagesMenu = "a"
