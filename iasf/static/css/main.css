@@ -64,3 +64,14 @@ html {
 body > .container {
   padding: 60px 15px 0;
 }
+
+/* scholarships page */
+@media only screen and (min-width:769px) {
+  .awardCard {
+    max-height: 80vh;
+    overflow: auto;
+  }
+}
+.awardCard .card-title {
+  font-size: 24px;
+}
