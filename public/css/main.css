@@ -1,0 +1,82 @@
+/*imports*/
+/*@import url("https://fonts.googleapis.com/css?family=News+Cycle:400,700");*/
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700');
+/*main styles*/
+body {
+  /*font-family: "News Cycle", "Arial Narrow Bold", sans-serif;*/
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+/*navbar styles*/
+.navbar-brand {
+  letter-spacing: 8px;
+  font-weight: bold;
+  font-size: 100%;
+  /*text-shadow: 3px 3px 1px #2c2e38, 5px 5px 1px #5c5f72;*/
+  text-shadow: 1px 3px 1px black;
+}
+.navbar-nav {
+  margin: auto; /*centers on page*/
+}
+.navbar-nav .nav-item {
+  margin: 0px 10px;
+}
+
+/*main image styles*/
+.mainImg {
+  position: relative;
+}
+.mainImg::before {
+  content: "";
+  position: absolute;
+  top: 0; 
+  left: 0;
+  width: 100%; 
+  height: 100%;  
+  opacity: .4; 
+  z-index: -1;
+  background-image: url(../everyone.jpg);
+  background-size: cover;
+}
+.titleDiv {
+
+}
+
+.card .card-title {
+  text-align: center;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  line-height: 60px; /* Vertically center the text there */
+  background-color: #f5f5f5;
+}
+body {
+  margin-bottom: 70px;
+}
+html {
+  position: relative;
+  min-height: 100%;
+}
+body > .container {
+  padding: 60px 15px 0;
+}
+/* main page */
+.sectionTitle {
+  font-weight: normal;
+  letter-spacing: 3px;
+}
+
+/* scholarships page */
+@media only screen and (min-width:769px) {
+  .awardCard {
+    max-height: 80vh;
+    overflow: auto;
+  }
+}
+.awardCard .card-title {
+  font-size: 24px;
+}
