@@ -1,0 +1,28 @@
+{{ partial "header.html" . }}
+<div class="row">
+
+<div class="col-12">
+	<h1 class="mt-2">Scholarships</h1><br>
+	<p class="lead">
+		We offer 4-year, 2-year, and 1-year scholarships thanks to the generosity of our donors.<br>
+		For more information on how to apply, please see <a href="./apply">Application Details</a>.
+		</p>
+</div>
+
+  {{ range .Data.Pages }}
+	<div class="card col-12 m-0 col-sm-6 col-md-4 col-lg-4 col-xl-3 awardCard">
+		<div class="card-block">
+			<div class="row">
+				
+	  	  <h3 class="card-title float-left">
+					<i class="fa fa-trophy fa-2x float-left" aria-hidden="true"></i>
+					{{.Title}}
+				</h3>
+				
+			</div>
+	  <p>{{ .Content }}</p>
+	  </div>
+	</div>
+ {{end}}
+</div>
+{{ partial "footer.html" . }}
