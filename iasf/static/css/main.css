@@ -64,6 +64,11 @@ html {
 body > .container {
   padding: 60px 15px 0;
 }
+/* main page */
+.sectionTitle {
+  font-weight: normal;
+  letter-spacing: 3px;
+}
 
 /* scholarships page */
 @media only screen and (min-width:769px) {
@@ -74,11 +79,4 @@ body > .container {
 }
 .awardCard .card-title {
   font-size: 24px;
-}
-
-.fancybox-wrap, .fancybox-wrap *{
-    -moz-box-sizing: content-box !important;
-    -webkit-box-sizing: content-box !important;
-    -safari-box-sizing: content-box !important;
-    box-sizing: content-box !important;
 }
