@@ -1,6 +1,6 @@
 baseURL = "http://epicfaace.github.io/iasf/"
 languageCode = "en-us"
-title = "Indian American Scholarship Foundation"
-theme = "blank"
+title = "Indian American Scholarship Fund"
+theme = "main"
 relativeURLs = false
 SectionPagesMenu = "a"
