@@ -1,4 +1,6 @@
 data:
+  - question: I will graduate in May 2018, when can I apply for a scholarship? Is the application available?
+    answer: The application for the 2018 academic year will be posted on our website in March 2018.  Please check our website at that time for the application.
   - question: I have been accepted to a graduate program in the United States. Am I eligible for a scholarship?
     answer: The Indian-American Scholarship Fund is designed to provide assistance to current high school students who have been accepted to an undergraduate institution. We are not funding graduate students at this time.
   - question: I am a student in India who has been accepted for study in the United States. Am I eligible for a scholarship?
@@ -8,15 +10,11 @@ data:
   - question: I would like to apply for the Merit scholarship. Do I need to provide information about my family income and financial aid package from my university?
     answer: No, the financial aid package and 2010 tax return is only required for Financial Aid Applicants.
   - question: Should I mail my application via registered mail? Should I mail my application via Express Mail or Next Day Air? How will I know if my application has been received?
-    answer: Completed applications should be mailed via regular mail to the address listed on the application. It is not necessary to mail applications via registered mail. Registered mail requires a signature for delivery. Our offices are not staffed during the day so applications would be re-routed to the Post Office for pickup.
-  - question: Applications should be postmarked by the appropriate deadline. Applications put into the mail by the due date will be considered on time. It is not necessary to send via express mail or via Next Day Air.
-    answer: We will mail an acknowledgement form within one week of receipt of the application. The acknowledgement will let you know that we have received your application and whether any information is outstanding.
-  - question: I will graduate in May 2012, when can I apply for a scholarship? Is the application available?
-    answer: The application for the 2012 academic year will be posted on our website in March 2012.  Please check our website at that time for the application.
+    answer: Completed applications should be mailed via regular mail to the address listed on the application. It is not necessary to mail applications via registered mail. Registered mail requires a signature for delivery. Our offices are not staffed during the day so applications would be re-routed to the Post Office for pickup. Applications should be postmarked by the appropriate deadline. Applications put into the mail by the due date will be considered on time. It is not necessary to send via express mail or via Next Day Air. We will mail an acknowledgement form within one week of receipt of the application. The acknowledgement will let you know that we have received your application and whether any information is outstanding.
   - question: I received my SAT scores electronically.  Can I print my scores from the SAT website and include it in my application?
     answer: Yes.  We will accept a print out from the College Board website. 
   - question: Will I be notified once you receive my application?
     answer: Yes, we will send an acknowledgement of all received applications.
-  - question: I haven't received my Financial Aid package from my university yet, Should I complete my application or wait until I receive my award letter?
+  - question: I haven't received my Financial Aid package from my university yet; should I complete my application or wait until I receive my award letter?
     answer: Yes.  Please complete your application along with a note that the financial aid package is forthcoming.  Once you receive your award letter, notify us via email and then mail it in. 
 
