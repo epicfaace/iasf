@@ -15,6 +15,11 @@ Then set up requirements:
 Each time you open this command prompt window, you have to type `workon iasf` before doing anything.
 
 ## DB migration
+Run this; also run these commands whenever you make changes to your models.
+```
+python manage.py makemigrations
+python manage.py migrate
+```
 
 ## Running the server
 `python manage.py runserver `
@@ -29,3 +34,12 @@ When you install a new package:
 django-admin startproject iasf
 python manage.py startapp apply
 ```
+
+# User (for admin)
+```
+python manage.py createsuperuser
+```
+
+# Other commands
+`python manage.py shell`
+`python manage.py dbshell`
