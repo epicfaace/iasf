@@ -1,0 +1,21 @@
+.flexColumn {
+    display: flex;
+    flex-flow: row wrap;
+    align-content: space-between;
+    justify-content: space-between;
+}
+.flexColumn .field {
+    flex: 1;
+    display: inline-block;
+}
+
+.threeColumn {
+}
+.threeColumn .field {
+    width: 33.3%;
+    display: inline-block;
+}
+.halfWidth {
+    width: 50%;
+    display: inline-block;
+}
