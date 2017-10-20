@@ -10,15 +10,6 @@ const schema = {
           "country":          { "type": "string" }
         },
         "required": ["street_address", "city", "state"]
-      },
-      "name": {
-        type: 'object',
-        title: '',
-        properties: {
-          'first': {type: 'string', title: 'First Name'},
-          'middle': {type: 'string', title: 'Middle Name'},
-          'last': {type: 'string', title: 'Last Name'}
-        }
       }
     },
     title: 'Registration',
@@ -26,7 +17,43 @@ const schema = {
     required: ['title'],
     properties: {
         name: { "$ref": "#/definitions/name" },
-        email: {type: 'string', format: 'email'},
+        school_name: {
+            type: 'string',
+            title: 'High school name'
+        },
+        school_address: {
+            "$ref": "#/definitions/address"
+        },
+        counselor: {
+            type: 'object',
+            title: 'Guidance counselor info',
+            properties: {
+                'name': {"$ref": "#/definitions/name"},
+                'email': { type: 'string', format: 'email', title: 'Guidance counselor email' }
+                // todo don't duplicate name definition here.
+            }
+        },
+        hs_gpa: {
+            title: 'High School GPA (/100 or /4.0 scale)',
+            type: "number",
+            min: 0
+            // todo: add min and max here.
+        },
+        class_rank: { // todo :make this optional and others required.
+            // todo: make max of rank be totalNum.
+            type: 'object',
+            properties: {
+                'rank': { type: 'string', title: 'Class rank: ', min: 0},
+                'totalNum': {type: 'number', title: 'out of ', min: 0} 
+            }
+        },
+        sat_scores: { // todo: old sat, new sat?
+            type: 'object',
+            title: 'SAT scores',
+            properties: {
+                //'Reading': { type: 'number', title: }
+            }
+        },
         phone: {
           type: 'object',
           title: '',
@@ -53,35 +80,14 @@ const schema = {
   };
   
   
-  const uiSchema =  {
-    
-    classNames: 'formPage formPageUserInfo',
-      name: {
-        classNames: 'threeColumn',
-        /*first: {
-          classNames: 'col-xs-12 col-sm-4'
-        },
-        middle: {
-          classNames: 'col-xs-12 col-sm-4'
-        },
-        last: {
-          classNames: 'col-xs-12 col-sm-4'
-        },*/
-      },
-      parentName: {
-        classNames: 'threeColumn'
-      },
-      address: {
-        classNames: 'flexColumn',
-        street_address: {
-          classNames: 'col-padding-0 col-xs-12'
+const uiSchema =  {
+    classNames: 'formPage formPageSchoolInfo',
+    counselor: {
+        email: {
+            'ui:title': 'Guidance counselor name'
         }
-      },
-      descent: {
-        classNames: 'col-xs-12 col-sm-6'
-      }
-  
-    };
+    }
+};
 
 
 export default {

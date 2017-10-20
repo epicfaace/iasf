@@ -1,6 +1,7 @@
 import * as React from 'react';
 import './FormPage.css';
 import * as userInfo from './schemas/userInfo';
+import * as schoolInfo from './schemas/schoolInfo';
 
 import Form from 'react-jsonschema-form';
 /*
@@ -36,12 +37,12 @@ const fields = {
 };
 
 const formData = {
-  title: "First task",
+  title: 'First task',
   done: true
 };
 
-const schema = userInfo.default.schema;
-const uiSchema = userInfo.default.uiSchema;
+const schema = [userInfo.default.schema, schoolInfo.default.schema];
+const uiSchema = [userInfo.default.uiSchema, schoolInfo.default.uiSchema];
 
 const log = (type: {}) => console.log.bind(console, type);
 
@@ -51,8 +52,8 @@ class FormPage extends React.Component {
         <div className="App">
             <h1>IASF application</h1>
             <Form
-              schema={schema}
-              uiSchema={uiSchema}
+              schema={schema[1]}
+              uiSchema={uiSchema[1]}
               formData={formData}
               widgets={widgets}
               fields={fields}
