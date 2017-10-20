@@ -9,13 +9,22 @@
     display: inline-block;
 }
 
+.mainForm {
+    padding: 20px;
+}
+
 .threeColumn {
 }
 .threeColumn .field {
     width: 33.3%;
     display: inline-block;
+    min-width: 100px;
 }
 .halfWidth {
     width: 50%;
     display: inline-block;
+}
+.col-xs-12 {
+    padding: 0 !important;
+    margin: 0 !important;
 }
