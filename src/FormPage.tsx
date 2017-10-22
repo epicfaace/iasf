@@ -49,7 +49,7 @@ const log = (type: {}) => console.log.bind(console, type);
 class FormPage extends React.Component {
   render() {
     return (
-        <div className="App">
+        <div className="App col-xs-12 col-sm-8 col-md-6 col-md-offset-3">
             <h1>IASF application</h1>
             <Form
               schema={schema[1]}
