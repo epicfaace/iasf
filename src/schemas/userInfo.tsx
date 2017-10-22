@@ -1,31 +1,13 @@
+import common from './definitions/common';
 const schema = {
     "definitions": {
-      "address": {
-        "type": "object",
-        "properties": {
-          "street_address": { "type": "string" },
-          "city":           { "type": "string" },
-          "state":          { "type": "string" },
-          "zip_code":          { "type": "string" },
-          "country":          { "type": "string" }
-        },
-        "required": ["street_address", "city", "state"]
-      },
-      "name": {
-        type: 'object',
-        title: '',
-        properties: {
-          'first': {type: 'string', title: 'First Name'},
-          'middle': {type: 'string', title: 'Middle Name'},
-          'last': {type: 'string', title: 'Last Name'}
-        }
-      }
+      "common": common
     },
     title: 'Registration',
     type: 'object',
     required: ['title'],
     properties: {
-        name: { "$ref": "#/definitions/name" },
+        name: { "$ref": "#/definitions/common/name" },
         email: {type: 'string', format: 'email'},
         phone: {
           type: 'object',
@@ -47,44 +29,50 @@ const schema = {
           enum: ["Facebook", "Internet search", "High school", "Friends", "Family", "Other"],
           enumNames: ["Facebook", "Internet search", "High school", "Friends", "Family", "Other"]
         },
-        address: { "$ref": "#/definitions/address" },
-        parentName: { "$ref": "#/definitions/name" }
+        address: { "$ref": "#/definitions/common/address" },
+        parentName: { "$ref": "#/definitions/common/name" }
       }
   };
   
   
-  const uiSchema =  {
-    
-    classNames: 'formPage formPageUserInfo',
-      name: {
-        classNames: 'threeColumn',
-        /*first: {
-          classNames: 'col-xs-12 col-sm-4'
-        },
-        middle: {
-          classNames: 'col-xs-12 col-sm-4'
-        },
-        last: {
-          classNames: 'col-xs-12 col-sm-4'
-        },*/
-      },
-      parentName: {
-        classNames: 'threeColumn'
-      },
-      address: {
-        classNames: 'flexColumn',
-        street_address: {
-          classNames: 'col-padding-0 col-xs-12'
-        }
-      },
-      descent: {
-        classNames: 'col-xs-12 col-sm-6'
-      }
+const uiSchema =  {
   
-    };
+  classNames: 'formPage formPageUserInfo',
+    name: {
+      classNames: 'threeColumn',
+      /*first: {
+        classNames: 'col-xs-12 col-sm-4'
+      },
+      middle: {
+        classNames: 'col-xs-12 col-sm-4'
+      },
+      last: {
+        classNames: 'col-xs-12 col-sm-4'
+      },*/
+    },
+    parentName: {
+      classNames: 'threeColumn'
+    },
+    address: {
+      classNames: 'flexColumn',
+      street_address: {
+        classNames: 'col-padding-0 col-xs-12'
+      }
+    },
+    descent: {
+      classNames: 'col-xs-12 col-sm-6'
+    }
 
+  };
+
+const metadata = {
+  id: "0",
+  title: "User info",
+  description: "User information..."
+};
 
 export default {
   "schema": schema,
-  "uiSchema": uiSchema
+  "uiSchema": uiSchema,
+  'metadata': metadata
 };

@@ -1,3 +1,4 @@
+/// <reference path="./interfaces.d.ts"/>
 import * as React from 'react';
 import './FormPage.css';
 import * as userInfo from './schemas/userInfo';
@@ -41,26 +42,48 @@ const formData = {
   done: true
 };
 
-const schema = [userInfo.default.schema, schoolInfo.default.schema];
-const uiSchema = [userInfo.default.uiSchema, schoolInfo.default.uiSchema];
+const steps = [
+  userInfo.default,
+  schoolInfo.default
+];
 
 const log = (type: {}) => console.log.bind(console, type);
 
-class FormPage extends React.Component {
+class FormPage extends React.Component<IFormPageProps, IFormPageState> {
+  constructor(props: IFormPageProps) {
+    super(props);
+    this.state = {step: 0};
+  }
+
+  onTabToggle(index: number) {
+    this.setState({step: index});
+  }
+
   render() {
     return (
-        <div className="App col-xs-12 col-sm-8 col-md-6 col-md-offset-3">
+        <div className="App">
             <h1>IASF application</h1>
-            <Form
-              schema={schema[1]}
-              uiSchema={uiSchema[1]}
-              formData={formData}
-              widgets={widgets}
-              fields={fields}
-              onChange={log('changed')}
-              onSubmit={log('submitted')}
-              onError={log('errors')}
-            />
+            <ul className="nav nav-pills nav-stacked col-xs-12 col-sm-4 col-md-3">
+              {steps.map((obj, index) =>
+                <li className={(index == 0 ? 'active': '')} key={obj.metadata.id} onClick={() => this.onTabToggle(index)}>
+                  <a data-toggle='tab'>
+                  {index + 1}. {obj.metadata.title}
+                  </a>
+                </li>
+              )}
+            </ul>
+            <div className="col-xs-12 col-sm-8 col-md-6">
+              <Form
+                schema={steps[this.state.step].schema}
+                uiSchema={steps[this.state.step].uiSchema}
+                formData={formData}
+                widgets={widgets}
+                fields={fields}
+                onChange={log('changed')}
+                onSubmit={log('submitted')}
+                onError={log('errors')}
+              />
+            </div>
         </div>
       );
   }

@@ -117,7 +117,14 @@ const uiSchema =  {
     }
 };
 
+const metadata = {
+    id: "1",
+    title: "School info",
+    description: "School information..."
+};
+
 export default {
   'schema': schema,
-  'uiSchema': uiSchema
+  'uiSchema': uiSchema,
+  'metadata': metadata
 };
