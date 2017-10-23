@@ -8,7 +8,7 @@ const schema = {
     required: ['title'],
     properties: {
         name: { "$ref": "#/definitions/common/name" },
-        email: {type: 'string', format: 'email'},
+        email: {type: 'string', format: 'email', title: "Email Address"},
         phone: {
           type: 'object',
           title: '',
@@ -54,12 +54,15 @@ const uiSchema =  {
       classNames: 'threeColumn'
     },
     address: {
-      classNames: 'flexColumn',
+      classNames: 'threeColumn',
       street_address: {
-        classNames: 'col-padding-0 col-xs-12'
+        //classNames: 'col-xs-12 col-sm-6'
       }
     },
     descent: {
+      classNames: 'col-xs-12 col-sm-6'
+    },
+    where: {
       classNames: 'col-xs-12 col-sm-6'
     }
 

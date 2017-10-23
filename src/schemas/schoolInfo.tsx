@@ -42,6 +42,7 @@ const schema = {
         class_rank: { // todo :make this optional and others required.
             // todo: make max of rank be totalNum.
             type: 'object',
+            title: "Class Rank",
             properties: {
                 'rank': { type: 'string', title: 'Class rank: ', min: 0},
                 'totalNum': {type: 'number', title: 'out of ', min: 0} 
@@ -82,29 +83,7 @@ const schema = {
                     // todo: do we want to choose from a list of ap exams?
                 }
             }
-        },
-        phone: {
-          type: 'object',
-          title: '',
-          properties: {
-            'home': {type: 'string', title: 'Home Phone'},
-            'cell': {type: 'string', title: 'Cell Phone'}
-          }
-        },
-        descent: {
-          type: 'string',
-          title: 'Claim to Indian Descent',
-          enum: ['Maternal grandparents', 'Paternal grandparents'],
-          enumNames: ['Maternal grandparents', 'Paternal grandparents']
-        },
-        where: {
-          type: 'string',
-          title: 'Where did you hear about IASF from?',
-          enum: ['Facebook', 'Internet search', 'High school', 'Friends', 'Family', 'Other'],
-          enumNames: ['Facebook', 'Internet search', 'High school', 'Friends', 'Family', 'Other']
-        },
-        address: { '$ref': '#/definitions/common/address' },
-        parentName: { '$ref': '#/definitions/common/name' }
+        }
       }
   };
   
@@ -114,6 +93,31 @@ const uiSchema =  {
         name: {
             'classNames': 'threeColumn'
         }
+    },
+    hs_address: {
+        classNames: 'flexColumn',
+        'ui-title': 'High School Address',
+        street_address: {
+          classNames: 'col-padding-0 col-xs-12'
+        }
+    },
+    counselor_name: {
+        'ui-title': "Guidance counselor name"
+    },
+    class_rank: {
+        classNames: 'twoColumn',
+        "ui:options": {
+            label: false
+        }
+    },
+    sat_scores: {
+        classNames: 'threeColumn',
+        total: {
+            classNames: 'fullWidth'
+        }
+    },
+    act_scores: {
+        classNames: 'threeColumn'
     }
 };
 

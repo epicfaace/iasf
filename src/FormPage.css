@@ -9,9 +9,12 @@
     display: inline-block;
 }
 
-.mainForm {
-    padding: 20px;
+@media only screen and (min-width: 768px) {
+    .mainForm {
+        padding-left: 20px;
+    }
 }
+
 
 .threeColumn {
 }
@@ -20,11 +23,14 @@
     display: inline-block;
     min-width: 100px;
 }
-.halfWidth {
+.twoColumn .field, .halfWidth {
     width: 50%;
     display: inline-block;
 }
+.oneColumn .field, .fullWidth {
+    width: 100%;
+}
 .col-xs-12 {
-    padding: 0 !important;
-    margin: 0 !important;
+    padding: 0;
+    margin: 0;
 }

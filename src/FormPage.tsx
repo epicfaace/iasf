@@ -73,16 +73,18 @@ class FormPage extends React.Component<IFormPageProps, IFormPageState> {
               )}
             </ul>
             <div className="col-xs-12 col-sm-8 col-md-6">
-              <Form
-                schema={steps[this.state.step].schema}
-                uiSchema={steps[this.state.step].uiSchema}
-                formData={formData}
-                widgets={widgets}
-                fields={fields}
-                onChange={log('changed')}
-                onSubmit={log('submitted')}
-                onError={log('errors')}
-              />
+              <div className="mainForm">
+                <Form
+                  schema={steps[this.state.step].schema}
+                  uiSchema={steps[this.state.step].uiSchema}
+                  formData={formData}
+                  widgets={widgets}
+                  fields={fields}
+                  onChange={log('changed')}
+                  onSubmit={log('submitted')}
+                  onError={log('errors')}
+                />
+              </div>
             </div>
         </div>
       );
