@@ -56,7 +56,7 @@ const uiSchema =  {
     address: {
       classNames: 'threeColumn',
       street_address: {
-        //classNames: 'col-xs-12 col-sm-6'
+        classNames: 'col-xs-12 col-sm-6'
       }
     },
     descent: {

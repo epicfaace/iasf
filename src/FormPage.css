@@ -16,7 +16,8 @@
 }
 
 
-.threeColumn {
+.threeColumn, .twoColumn {
+    clear: both;
 }
 .threeColumn .field {
     width: 33.3%;
