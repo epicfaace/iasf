@@ -1,6 +1,7 @@
 const common = {
     "address": {
         "type": "object",
+        "title": "Address",
         "properties": {
         "street_address": { "type": "string" },
         "city":           { "type": "string" },
@@ -17,7 +18,8 @@ const common = {
         "first": {"type": "string", "title": "First Name"},
         "middle": {"type": "string", "title": "Middle Name"},
         "last": {"type": "string", "title": "Last Name"}
-        }
+        },
+        required: ['first', 'last']
     }
 };
 export default common;

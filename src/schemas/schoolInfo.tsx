@@ -13,9 +13,9 @@ const schema = {
         max: 36
        }
     },
-    title: 'Registration',
+    title: 'School Information',
     type: 'object',
-    required: ['title'],
+    required: ['hs_name', 'hs_address', 'counselor', 'hs_gpa', 'college_info'],
     properties: {
         hs_name: {
             type: 'string',
@@ -42,10 +42,11 @@ const schema = {
         class_rank: { // todo :make this optional and others required.
             // todo: make max of rank be totalNum.
             type: 'object',
+            required: true,
             title: "Class Rank",
             properties: {
                 'rank': { type: 'string', title: 'Class rank: ', min: 0},
-                'totalNum': {type: 'number', title: 'out of ', min: 0} 
+                'totalNum': {type: 'number', title: 'Out of: ', min: 0} 
             }
         },
         sat_scores: { // todo: old sat, new sat? also do we really need this if we have a score report?
@@ -83,6 +84,19 @@ const schema = {
                     // todo: do we want to choose from a list of ap exams?
                 }
             }
+        },
+        college_info: {
+            type: 'object',
+            title: "College information",
+            description: "Information about your future (or current) college.",
+            properties: {
+                name: {type: 'string', title: 'College name'},
+                received_acceptance_letter: {
+                    type: 'boolean',
+                    title: 'I have received an acceptance letter.',
+                    enumNames: ['Yes', 'No']
+                }
+            }
         }
       }
   };
@@ -105,10 +119,7 @@ const uiSchema =  {
         'ui-title': "Guidance counselor name"
     },
     class_rank: {
-        classNames: 'twoColumn',
-        "ui:options": {
-            label: false
-        }
+        classNames: 'twoColumn'
     },
     sat_scores: {
         classNames: 'threeColumn',
@@ -118,6 +129,12 @@ const uiSchema =  {
     },
     act_scores: {
         classNames: 'threeColumn'
+    },
+    college_info: {
+        classNames: '',
+        received_acceptance_letter: {
+            'ui:widget': 'radio'
+        }
     }
 };
 

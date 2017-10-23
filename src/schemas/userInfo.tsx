@@ -3,9 +3,9 @@ const schema = {
     "definitions": {
       "common": common
     },
-    title: 'Registration',
+    title: 'User Information',
     type: 'object',
-    required: ['title'],
+    required: ['title', 'name', 'email', 'phone', 'descent', 'where_heard_from', 'home_address', 'parent_name'],
     properties: {
         name: { "$ref": "#/definitions/common/name" },
         email: {type: 'string', format: 'email', title: "Email Address"},
@@ -15,6 +15,7 @@ const schema = {
           properties: {
             'home': {type: 'string', title: 'Home Phone'},
             'cell': {type: 'string', title: 'Cell Phone'}
+            // todo: add required validation here.
           }
         },
         descent: {
@@ -23,14 +24,14 @@ const schema = {
           enum: ["Maternal grandparents", "Paternal grandparents"],
           enumNames: ["Maternal grandparents", "Paternal grandparents"]
         },
-        where: {
+        where_heard_from: {
           type: "string",
           title: "Where did you hear about IASF from?",
           enum: ["Facebook", "Internet search", "High school", "Friends", "Family", "Other"],
           enumNames: ["Facebook", "Internet search", "High school", "Friends", "Family", "Other"]
         },
-        address: { "$ref": "#/definitions/common/address" },
-        parentName: { "$ref": "#/definitions/common/name" }
+        home_address: { "$ref": "#/definitions/common/address" },
+        parent_name: { "$ref": "#/definitions/common/name" }
       }
   };
   
@@ -39,31 +40,24 @@ const uiSchema =  {
   
   classNames: 'formPage formPageUserInfo',
     name: {
-      classNames: 'threeColumn',
-      /*first: {
-        classNames: 'col-xs-12 col-sm-4'
-      },
-      middle: {
-        classNames: 'col-xs-12 col-sm-4'
-      },
-      last: {
-        classNames: 'col-xs-12 col-sm-4'
-      },*/
-    },
-    parentName: {
       classNames: 'threeColumn'
     },
-    address: {
+    descent: {
+      classNames: 'halfWidth'
+    },
+    where_heard_from: {
+      classNames: 'halfWidth'
+    },
+    home_address: {
       classNames: 'threeColumn',
+      'ui-title': 'Home Address',
       street_address: {
         classNames: 'col-xs-12 col-sm-6'
       }
     },
-    descent: {
-      classNames: 'col-xs-12 col-sm-6'
-    },
-    where: {
-      classNames: 'col-xs-12 col-sm-6'
+    parent_name: {
+      classNames: 'threeColumn',
+      'ui:title': 'Parent Name'
     }
 
   };
