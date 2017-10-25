@@ -4,7 +4,6 @@ from apply.models import Application
 from django.contrib.auth.mixins import LoginRequiredMixin
     
 class ApplicationList(LoginRequiredMixin, ListView):
-
     model = Application
     template_name = 'apply/applicationList.html'
     redirect_field_name = 'login'
