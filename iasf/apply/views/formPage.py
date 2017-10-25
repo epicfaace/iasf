@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 
 from django.urls import reverse_lazy
 from django.http import HttpResponseRedirect
-from apply.models import Application
+from iasf.apply.models import Application
 from django.views.generic.edit import UpdateView
 
 class AjaxableResponseMixin(object):

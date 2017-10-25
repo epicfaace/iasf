@@ -31,8 +31,9 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'pages',
-    'apply',
+    'iasf.accounts',
+    'iasf.pages',
+    'iasf.apply',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

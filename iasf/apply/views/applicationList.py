@@ -1,6 +1,6 @@
 from django.views.generic.list import ListView
 from django.utils import timezone
-from apply.models import Application
+from iasf.apply.models import Application
 from django.contrib.auth.mixins import LoginRequiredMixin
     
 class ApplicationList(LoginRequiredMixin, ListView):
