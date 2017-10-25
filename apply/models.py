@@ -4,6 +4,7 @@ from __future__ import unicode_literals
 from django.db import models
 from django.conf import settings
 from django.core.validators import RegexValidator
+from django.contrib.auth.models import User
 
 class Submissions:
     pass
@@ -23,6 +24,7 @@ CSS profile report
 Any additional documents (optional)
 
     """
+    user = User
     first_name = models.CharField(max_length=50, blank=False)
     middle_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50, blank=False)

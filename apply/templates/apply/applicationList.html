@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Application List</h1>
+
+    {% if object_list %}
+    <ul>
+
+      {% for application in object_list %}
+      <li>
+        {{application}}
+      </li>
+      {% endfor %}
+
+    </ul>
+    {% else %}
+      <p>There are no applications on your account.</p>
+    {% endif %}       
+{% endblock content %}

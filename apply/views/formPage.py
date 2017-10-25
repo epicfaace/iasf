@@ -37,6 +37,9 @@ class FormPage(AjaxableResponseMixin, UpdateView):
     success_url = reverse_lazy('form-page')
     fields = ['first_name', 'last_name']
 
+    def get_object(self):
+        return get_object_or_404(Application, user=self.request.user)
+    
     def form_valid(self, form):
         # This method is called when valid form data has been POSTed.
         # It should return an HttpResponse.
