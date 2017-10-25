@@ -1,6 +1,8 @@
 input[type=text], input[type=email], select {
     display: block;
     height: 34px;
+    width: 100%;
+    min-width: 200px;
     padding: 6px 12px;
     font-size: 14px;
     line-height: 1.42857143;
@@ -18,18 +20,22 @@ input[type=text], input[type=email], select {
 
 .formFieldset {
     display: flex;
+    align-items: stretch;
     flex-wrap: wrap;
 }
 .formFieldset .formField {
     flex: 1;
     margin-bottom: 10px;
+    padding: 0px 10px;
 }
 .fieldsetHeader {
     font-size: 20px;
     font-weight: bold;
     text-align: center;
+    margin-top: 5px;
 }
 .fieldsetHeader hr {
     border-width: 1px;
     width: 20%;
+    margin-top: 10px;
 }

@@ -26,11 +26,17 @@ Any additional documents (optional)
         {
             "name": "Personal information",
             "fields": (
-                ("Personal information", {"fields": ("first_name", "middle_name", "last_name")}),
-                ("Other", {"fields": ("email", "phone_home", "phone_mobile", "claim_indian_descent",
-                "home_address_1", "home_address_2", "home_city", "home_state", "home_zip_code",
-                "parent_first_name", "parent_middle_name", "parent_last_name")}),
-                ("email", "phone_home"),
+                ("Personal information", {"fields":
+                    ("first_name", "middle_name", "last_name", "email", "phone_home", "phone_mobile", "claim_indian_descent")
+                }),
+                ("Address", {"fields":
+                    ("home_address_1",)
+                }),
+                ("home_address_2",),
+                ("home_city", "home_state", "home_zip_code"),
+                ("Parent information", {"fields":
+                    ("parent_first_name", "parent_middle_name", "parent_last_name")
+                })
             )
         },
         {
