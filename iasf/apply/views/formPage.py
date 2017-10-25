@@ -42,8 +42,7 @@ class FormPage(AjaxableResponseMixin, UpdateView):
         # todo: error handling here.
         try:
             class ApplicationFormCustom(ApplicationForm):
-                class Meta:
-                    model = Application
+                class Meta(ApplicationForm.Meta):
                     fields = Application.getFields(int(self.kwargs['step']))
             self.form_class = ApplicationFormCustom
         except ValueError as verr:
@@ -62,3 +61,12 @@ class FormPage(AjaxableResponseMixin, UpdateView):
         # This method is called when valid form data has been POSTed.
         # It should return an HttpResponse.
         return super(FormPage, self).form_valid(form)
+
+    def get_pages(self):
+        """Used by the template to get the page information (for display in the sidebar).
+        """
+        return Application.pages
+    def get_page_number(self):
+        """Returns current page number, used by the template.
+        """
+        return int(self.kwargs['step'])

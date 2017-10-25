@@ -2,7 +2,15 @@ from django import forms
 from .models import Application
 
 class ApplicationForm(forms.ModelForm):
+    """
+    Abstract class for application form page. An instance of this form is created in formPage.py with the
+    "fields" attribute overriden to match the fields seen in a specific page.
+    """
     class Meta:
+        abstract = True
         model = Application
         fields =  Application.getFields(0)
+        widgets = {
+            'a': forms.Textarea(attrs={'cols': 80, 'rows': 20}),
+        }
     

@@ -5,7 +5,11 @@
 <h1>IASF Application Form</h1>
 
 <ul class="nav nav-pills nav-stacked col-xs-12 col-sm-4 col-md-3">
-    <li class="active"><a>1. User info</a></li>
+    {% for page in view.get_pages %}
+        <li class="{% if forloop.counter0 == view.get_page_number %}active{% endif %}"><a>{{forloop.counter}}. {{ page.name }}</a></li>
+    
+    {% endfor %}
+    
     
     <li class=""><a>2. School info</a></li>
 </ul>
