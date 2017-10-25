@@ -35,7 +35,7 @@ class FormPage(AjaxableResponseMixin, UpdateView):
     template_name = 'apply/formPage.html'
     model = Application
     success_url = reverse_lazy('apply:form-page')
-    fields = ['first_name', 'last_name']
+    fields = Application.getFields(0)
 
     def get_object(self):
         try:
