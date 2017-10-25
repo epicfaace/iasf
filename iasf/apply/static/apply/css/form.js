@@ -6,6 +6,7 @@ $(function() {
 
     // when page link clicked, first submit the current form.
     $("a.pageLink").click(function(e) {
+        $(".overlay").show();
         e.preventDefault();
         var url = $(this).attr("href");
         var $form = $(".applicationForm");
@@ -13,6 +14,8 @@ $(function() {
             window.location.href = url;
         }).fail(function() {
             alert("There was an error submitting the form. Please fix the errors and try again.");
-        });
+        }).done(function() {
+            $(".overlay").hide();
+        })
     });
 });

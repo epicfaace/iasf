@@ -5,6 +5,7 @@ from django.db import models
 from django.conf import settings
 from django.core.validators import RegexValidator
 from django.utils.translation import ugettext_lazy as _
+from django.contrib.postgres.fields import JSONField
 
 class Application(models.Model):
     """
@@ -139,7 +140,7 @@ Any additional documents (optional)
     scores_act_composite = models.IntegerField(blank=True, null=True)
 
     # todo: fix ap exam scores. also do we really want this...?
-    scores_ap = models.JSONField(blank=True, null=True)
+    scores_ap = JSONField(blank=True, null=True)
 
     college_name = models.CharField(_("College name"), blank=True, max_length=100)
     college_received_acceptance_letter = models.NullBooleanField(_("I have received an acceptance letter."), max_length=100)
@@ -150,17 +151,17 @@ Any additional documents (optional)
     # PAGE 4: FINANCIAL INFORMATION
     income_parent = models.IntegerField(blank=True, null=True)
     income_student = models.IntegerField(blank=True, null=True)
-    list_dependents = models.JSONField(_("List of dependents currently entering college"), blank=True, null=True) # todo: jsonfield.
+    list_dependents = JSONField(_("List of dependents currently entering college"), blank=True, null=True) # todo: jsonfield.
     college_costs_applicant = models.IntegerField(_("Approximate college cost for applicant"), blank=True, null=True)
     college_costs_dependents = models.IntegerField(_("Approximate college cost for other dependents"), blank=True, null=True)
     income_student = models.IntegerField(_("Expected financial contribution"), blank=True, null=True) # per year? todo
 
     # financial assistance from other sources
-    scholarships_hope = models.JSONField(blank=True, null=True)
-    scholarships_pell = models.JSONField(blank=True, null=True)
-    scholarships_other = models.JSONField(blank=True, null=True)
+    scholarships_hope = JSONField(blank=True, null=True)
+    scholarships_pell = JSONField(blank=True, null=True)
+    scholarships_other = JSONField(blank=True, null=True)
 
-    financial_needs_statement = models.TextField(_("Please describe any unusual financial circumstances in your family not listed previously on your application. You may include any information that will be beneficial to the Indian American Scholarship committee. Attach separately, if needed.", blank=True, null=True)
+    financial_needs_statement = models.TextField(_("Please describe any unusual financial circumstances in your family not listed previously on your application. You may include any information that will be beneficial to the Indian American Scholarship committee. Attach separately, if needed."), blank=True, null=True)
 
     # form meta fields.
     date_created = models.DateField(null=True, blank=True)
