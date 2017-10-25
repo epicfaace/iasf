@@ -14,8 +14,7 @@ $(function() {
             window.location.href = url;
         }).fail(function() {
             alert("There was an error submitting the form. Please fix the errors and try again.");
-        }).done(function() {
             $(".overlay").hide();
-        })
+        });
     });
 });

@@ -62,7 +62,7 @@ Any additional documents (optional)
         {
             "name": "Essay",
             "fields": (
-                ("essay")
+                ("")
             )
         },
         {
@@ -80,7 +80,7 @@ Any additional documents (optional)
         {
             "name": "Submit",
             "fields": (
-                ("essay")
+                ("")
             )
         }
     ]
