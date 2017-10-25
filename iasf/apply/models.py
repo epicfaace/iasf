@@ -33,8 +33,8 @@ Any additional documents (optional)
     parent_first_name = models.CharField(max_length=50, blank=True)
     parent_middle_name = models.CharField(max_length=50)
     parent_last_name = models.CharField(max_length=50, blank=True)
-    claim_indian_maternal = models.BooleanField(blank=True, verbose_name="Claim to Indian descent via maternal grandparents")
-    claim_indian_paternal = models.BooleanField(blank=True, verbose_name="Claim to Indian descent via paternal grandparents")
+    claim_indian_maternal = models.NullBooleanField(blank=True, verbose_name="Claim to Indian descent via maternal grandparents")
+    claim_indian_paternal = models.NullBooleanField(blank=True, verbose_name="Claim to Indian descent via paternal grandparents")
     # second page:
     high_school = models.CharField(max_length=100)
     
