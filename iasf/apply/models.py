@@ -24,7 +24,7 @@ Any additional documents (optional)
     # todo: make the pages editable (another object?)
     pages = [
         {
-            "name": "Personal information",
+            "name": "Personal Information",
             "fields": (
                 ("Personal information", {"fields":
                     ("first_name", "middle_name", "last_name", "email", "phone_home", "phone_mobile", "claim_indian_descent")
@@ -40,15 +40,22 @@ Any additional documents (optional)
             )
         },
         {
-            "name": "School information",
+            "name": "School Information",
             "fields": (
-                ("All", {"fields": ("hs_name", "hs_address_1", "hs_address_2", "hs_city", "hs_state", "hs_zip_code",
-                "hs_counselor_first_name", "hs_counselor_middle_name", "hs_counselor_last_name",
-                "hs_counselor_email","hs_gpa", "hs_class_rank","hs_class_size",
-                "scores_sat_reading","scores_sat_math","scores_sat_writing","scores_sat_total",
-                "scores_act_reading","scores_act_math","scores_act_science","scores_act_writing","scores_act_composite",
-                "scores_ap","college_name","college_received_acceptance_letter"
-                )}),
+                ("High School", {"fields": (
+                    "hs_name", "hs_address_1", "hs_address_2", "hs_city", "hs_state", "hs_zip_code",
+                    "hs_counselor_first_name", "hs_counselor_middle_name", "hs_counselor_last_name",
+                    "hs_counselor_email")
+                }),
+                ("Grades and test scores", {"fields": (
+                    "hs_gpa", "hs_class_rank","hs_class_size",
+                    "scores_sat_reading","scores_sat_math","scores_sat_writing","scores_sat_total",
+                    "scores_act_reading","scores_act_math","scores_act_science","scores_act_writing","scores_act_composite",
+                    "scores_ap")
+                }),
+                ("College information", {"fields": (
+                    "college_name","college_received_acceptance_letter")
+                })
             )
         }
     ]
