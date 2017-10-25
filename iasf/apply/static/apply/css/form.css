@@ -24,3 +24,12 @@ input[type=text], input[type=email], select {
     flex: 1;
     margin-bottom: 10px;
 }
+.fieldsetHeader {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+.fieldsetHeader hr {
+    border-width: 1px;
+    width: 20%;
+}
