@@ -8,8 +8,8 @@ class ApplicationList(LoginRequiredMixin, ListView):
     template_name = 'apply/applicationList.html'
     login_url = 'login'
 
-    def geta_queryset(self):
-        return Application.objects.filter(user=self.request.user)
+    def get_queryset(self):
+        return Application.objects.filter(account=self.request.user)
     
     #def get_context_data(self, **kwargs):
     #    context = super(ApplicationList, self).get_context_data(**kwargs)

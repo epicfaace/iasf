@@ -38,7 +38,7 @@ class FormPage(AjaxableResponseMixin, UpdateView):
     fields = ['first_name', 'last_name']
 
     def get_object(self):
-        return get_object_or_404(Application, user=self.request.user)
+        return get_object_or_404(Application, account=self.request.user)
     
     def form_valid(self, form):
         # This method is called when valid form data has been POSTed.
