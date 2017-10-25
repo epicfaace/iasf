@@ -6,7 +6,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 class ApplicationList(LoginRequiredMixin, ListView):
     model = Application
     template_name = 'apply/applicationList.html'
-    redirect_field_name = 'login'
+    login_url = 'login'
 
     def geta_queryset(self):
         return Application.objects.filter(user=self.request.user)
