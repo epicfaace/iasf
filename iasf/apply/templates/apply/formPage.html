@@ -4,6 +4,7 @@
 {% block head %}
 
 <link rel="stylesheet" type="text/css" href="{% static 'apply/css/form.css' %}" />
+<script src="{% static 'apply/css/form.js' %}"></script>
 {% endblock head %}
 
 {% block content %}
@@ -19,11 +20,11 @@
 </ul>
 
 <div class="col-xs-12 col-sm-8">
-    <form class="applicationForm">
+    <form method=POST action="" class="applicationForm">
         
         {% include 'apply/forms/form_as_fieldsets.html' %}
         
-        <input type="button" class="btn" name="save" value="Save" />
+        <input type="button" class="btn btnSave" name="save" value="Save" />
     </form>
 </div>
 
