@@ -43,7 +43,7 @@ class FormPage(AjaxableResponseMixin, UpdateView):
         try:
             class ApplicationFormCustom(ApplicationForm):
                 class Meta(ApplicationForm.Meta):
-                    fields = Application.getFields(int(self.kwargs['step']))
+                    fieldsets = Application.getFields(int(self.kwargs['step']))
             self.form_class = ApplicationFormCustom
         except ValueError as verr:
             return HttpResponseRedirect(reverse_lazy('apply:form-page-start'))

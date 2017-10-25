@@ -1,4 +1,10 @@
 {% extends "base.html" %}
+{% load static %}
+
+{% block head %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'apply/css/form.css' %}" />
+{% endblock head %}
 
 {% block content %}
 
@@ -6,17 +12,20 @@
 
 <ul class="nav nav-pills nav-stacked col-xs-12 col-sm-4 col-md-3">
     {% for page in view.get_pages %}
-        <li class="{% if forloop.counter0 == view.get_page_number %}active{% endif %}"><a>{{forloop.counter}}. {{ page.name }}</a></li>
-    
+        <li class="{% if forloop.counter0 == view.get_page_number %}active{% endif %}">
+            <a class="pageLink" href="{% url 'apply:form-page' forloop.counter0 %}">{{forloop.counter}}. {{ page.name }}</a>
+        </li>
     {% endfor %}
-    
-    
-    <li class=""><a>2. School info</a></li>
 </ul>
 
 <div class="col-xs-12 col-sm-8">
     Form is here:
-    {{ form }}
+    <form class="applicationForm">
+        
+        {% include 'betterforms/form_as_fieldsets.html' %}
+        
+        <input type="button" class="btn" name="save" value="Save" />
+    </form>
 </div>
 
 {% endblock content %}
