@@ -4,6 +4,7 @@ from __future__ import unicode_literals
 from django.urls import reverse_lazy
 from django.http import HttpResponseRedirect
 from iasf.apply.models import Application
+from iasf.apply.forms import ApplicationForm
 from django.views.generic.edit import UpdateView
 
 class AjaxableResponseMixin(object):
@@ -31,15 +32,20 @@ class AjaxableResponseMixin(object):
         else:
             return response
 
-class FormPage(AjaxableResponseMixin, UpdateView,):
+class FormPage(AjaxableResponseMixin, UpdateView):
     template_name = 'apply/formPage.html'
     model = Application
     success_url = reverse_lazy('apply:form-page')
-    fields = Application.getFields(0)
+    # form_class = ApplicationForm
+
     def dispatch(self, *args, **kwargs):
         # todo: error handling here.
         try:
-            self.fields = Application.getFields(int(self.kwargs['step']))
+            class ApplicationFormCustom(ApplicationForm):
+                class Meta:
+                    model = Application
+                    fields = Application.getFields(int(self.kwargs['step']))
+            self.form_class = ApplicationFormCustom
         except ValueError as verr:
             return HttpResponseRedirect(reverse_lazy('apply:form-page-start'))
         except Exception as ex:
