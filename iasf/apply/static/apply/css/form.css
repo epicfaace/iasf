@@ -18,6 +18,7 @@ input[type=text], input[type=email], select {
 
 .formFieldset {
     display: flex;
+    flex-wrap: wrap;
 }
 .formFieldset .formField {
     flex: 1;

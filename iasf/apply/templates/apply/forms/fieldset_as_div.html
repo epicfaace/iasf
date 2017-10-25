@@ -1,7 +1,7 @@
 {% if fieldset.template_name %}
 {% include fieldset.template_name %}
 {% else %}
-<fieldset class="{{ fieldset.css_classes }}">
+<div class="{{ fieldset.css_classes }}">
   {% if fieldset.legend %}
   <legend>{{ fieldset.legend }}</legend>
   {% endif %}
@@ -13,5 +13,5 @@
       {% include field_template_name with field=thing %}
     {% endif %}
   {% endfor %}
-</fieldset>
+</div>
 {% endif %}
