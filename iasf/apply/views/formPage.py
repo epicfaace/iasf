@@ -31,17 +31,26 @@ class AjaxableResponseMixin(object):
         else:
             return response
 
-class FormPage(AjaxableResponseMixin, UpdateView):
+class FormPage(AjaxableResponseMixin, UpdateView,):
     template_name = 'apply/formPage.html'
     model = Application
     success_url = reverse_lazy('apply:form-page')
     fields = Application.getFields(0)
-
-    def get_object(self):
+    def dispatch(self, *args, **kwargs):
+        # todo: error handling here.
         try:
-            application = Application.objects.get(account=self.request.user)
+            self.fields = Application.getFields(int(self.kwargs['step']))
+        except ValueError as verr:
+            return HttpResponseRedirect(reverse_lazy('apply:form-page-start'))
+        except Exception as ex:
+            return HttpResponseRedirect(reverse_lazy('apply:form-page-start'))
+        try:
+            self.application = Application.objects.get(account=self.request.user)
         except Application.DoesNotExist:
-            return HttpResponseRedirect('apply:form-page-start')
+            return HttpResponseRedirect(reverse_lazy('apply:form-page-start'))
+        return super(FormPage, self).dispatch(*args, **kwargs)
+    def get_object(self):
+        return self.application
     
     def form_valid(self, form):
         # This method is called when valid form data has been POSTed.
