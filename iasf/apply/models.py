@@ -34,14 +34,15 @@ Any additional documents (optional)
         },
         {
             "name": "School information",
-            "fields": [
-                "hs_name", "hs_address_1", "hs_address_2", "hs_city", "hs_state", "hs_zip_code",
+            "fields": (
+                ("All", {"fields": ("hs_name", "hs_address_1", "hs_address_2", "hs_city", "hs_state", "hs_zip_code",
                 "hs_counselor_first_name", "hs_counselor_middle_name", "hs_counselor_last_name",
                 "hs_counselor_email","hs_gpa", "hs_class_rank","hs_class_size",
                 "scores_sat_reading","scores_sat_math","scores_sat_writing","scores_sat_total",
                 "scores_act_reading","scores_act_math","scores_act_science","scores_act_writing","scores_act_composite",
                 "scores_ap","college_name","college_received_acceptance_letter"
-            ]
+                )}),
+            )
         }
     ]
     CLAIM_INDIAN_DESCENT_CHOICES = (
