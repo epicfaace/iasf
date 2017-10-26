@@ -1,16 +1,12 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Application List</h1>
+    <h1>Your applications</h1>
 
     {% if object_list %}
     <ul>
 
-      {% for application in object_list %}
-      <li>
-        {{application}}
-      </li>
-      {% endfor %}
+        <a href="{% url 'apply:form-page-start' %}">Edit existing application</a>
 
     </ul>
     {% else %}
