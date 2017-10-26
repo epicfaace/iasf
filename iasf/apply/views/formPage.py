@@ -15,6 +15,8 @@ class FormPage(AjaxableResponseMixin, UpdateView):
     # form_class = ApplicationForm
 
     def dispatch(self, *args, **kwargs):
+        if not self.request.user.is_authenticated:
+            return HttpResponseRedirect(reverse_lazy('login'))
         # todo: error handling here.
         self.success_url = self.request.get_full_path()
         try:
