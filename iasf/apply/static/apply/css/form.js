@@ -5,7 +5,7 @@ $(function() {
     });
 
     // when page link clicked, first submit the current form.
-    $("a.pageLink").click(function(e) {
+    $("a.pageLink, a").click(function(e) {
         $(".overlay").show();
         e.preventDefault();
         var url = $(this).attr("href");
