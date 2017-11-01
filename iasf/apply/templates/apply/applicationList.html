@@ -4,13 +4,19 @@
     <h1>Your applications</h1>
 
     {% if object_list %}
-    <ul>
 
-        <a href="{% url 'apply:form-page-start' %}">Edit existing application</a>
+        <a href="{% url 'apply:form-page-start' %}">
+            <button class="btn btn-primary">
+                Edit existing application
+            </button>
+        </a>
 
-    </ul>
     {% else %}
       <p>There are no applications for this year on your account.</p>
-      <a href="{% url 'apply:application-new' %}">Create a new application.</a>
+      <a href="{% url 'apply:application-new' %}">
+        <button class="btn btn-primary">
+          Create a new application.
+        </button>
+      </a>
     {% endif %}       
 {% endblock content %}
