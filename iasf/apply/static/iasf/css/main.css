@@ -1,0 +1,8 @@
+body {
+    background-color: #eeeeee;
+}
+.main {
+    background-color: white;
+    box-shadow: 2px 2px 2px black;
+    min-height: 90vh;
+}
