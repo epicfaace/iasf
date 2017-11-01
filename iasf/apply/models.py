@@ -6,6 +6,8 @@ from django.conf import settings
 from django.core.validators import RegexValidator
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.postgres.fields import JSONField
+#from .widgets import DictionaryWidget, DictionaryArrayWidget
+from .fields import JSONListSchemaField
 
 class Application(models.Model):
     """
@@ -62,13 +64,13 @@ Any additional documents (optional)
         {
             "name": "Essay",
             "fields": (
-                ("")
+                ("essay")
             )
         },
         {
             "name": "Activities",
             "fields": (
-                ("")
+                ("activities")
             )
         },
         {
@@ -140,13 +142,16 @@ Any additional documents (optional)
     scores_act_composite = models.IntegerField(blank=True, null=True)
 
     # todo: fix ap exam scores. also do we really want this...?
-    scores_ap = JSONField(blank=True, null=True)
+    scores_ap = JSONListSchemaField(name='scores_ap', blank=True, null=True)
 
     college_name = models.CharField(_("College name"), blank=True, max_length=100)
     college_received_acceptance_letter = models.NullBooleanField(_("I have received an acceptance letter."), max_length=100)
 
     # PAGE 3: ESSAY
     essay = models.TextField(blank=True, null=True)
+
+    # PAGE 4: ACTIVITIES
+    activities = JSONListSchemaField(name='activities', blank=True, null=True)
 
     # PAGE 4: FINANCIAL INFORMATION
     income_parent = models.IntegerField(blank=True, null=True)

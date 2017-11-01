@@ -4,6 +4,9 @@
 {% block head %}
 
 <link rel="stylesheet" type="text/css" href="{% static 'apply/css/form.css' %}" />
+<script id="JSONListFieldSchemas" type="application/json">
+    {{ view.JSONListFieldSchemas | safe }}
+</script>
 <script src="{% static 'apply/css/form.js' %}"></script>
 {% endblock head %}
 

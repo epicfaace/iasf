@@ -7,10 +7,12 @@ from iasf.apply.models import Application
 from iasf.apply.forms import ApplicationForm
 from iasf.apply.mixins import AjaxableResponseMixin
 from django.views.generic.edit import UpdateView
+from iasf.apply.schemas import JSONListFieldSchemas
 
 class FormPage(AjaxableResponseMixin, UpdateView):
     template_name = 'apply/formPage.html'
     model = Application
+    JSONListFieldSchemas = JSONListFieldSchemas.schema
     # success_url = reverse_lazy('apply:form-page', step=self.kwargs['step'])
     # form_class = ApplicationForm
 
@@ -49,3 +51,4 @@ class FormPage(AjaxableResponseMixin, UpdateView):
         """Returns current page number, used by the template.
         """
         return int(self.kwargs['step'])
+    
