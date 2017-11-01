@@ -142,7 +142,7 @@ Any additional documents (optional)
     scores_act_composite = models.IntegerField(blank=True, null=True)
 
     # todo: fix ap exam scores. also do we really want this...?
-    scores_ap = JSONListSchemaField(name='scores_ap', blank=True, null=True)
+    scores_ap = JSONListSchemaField(_("AP Exams Taken"), blank=True, null=True)
 
     college_name = models.CharField(_("College name"), blank=True, max_length=100)
     college_received_acceptance_letter = models.NullBooleanField(_("I have received an acceptance letter."), max_length=100)
