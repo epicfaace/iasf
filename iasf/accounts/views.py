@@ -15,6 +15,6 @@ class SignupView(FormView):
     def form_valid(self, form):
         # This method is called when valid form data has been POSTed.
         # It should return an HttpResponse.
-        instance = form_data.save()
+        instance = form.save()
         # self.cleaned_data['temp_id']
         return super(SignupView, self).form_valid(form)
