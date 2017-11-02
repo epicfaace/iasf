@@ -8,9 +8,13 @@ function parseSchemas() {
             $("form.applicationForm").find("textarea[name='"+inputName+"']").each(function() {
                 var $textarea = $(this).hide().addClass("JSONFieldValue");
                 var properties = schemas[inputName].items.properties;
+                var propertyOrder = schemas[inputName].items.order; // this is the list of keys in properties that should be enumerated through.
                 var tableHeadRow = "<tr>";
                 var tableBodyRow = "<tr>";
-                for (var property in properties) {
+                console.log(propertyOrder);
+                for (var i in propertyOrder) {
+                    var property = propertyOrder[i];
+                    console.log(property);
                     var propertyTitle = (properties[property].title ? properties[property].title: property); // If "title" attribute of object is defined, let the title be this.
                     tableHeadRow += "<th>" + propertyTitle + "</th>";
                     var inputType = getInputTypeFromSchema(properties[property].type);

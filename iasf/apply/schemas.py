@@ -44,16 +44,16 @@ class JSONListFieldSchemas:
                         },
                         "grade": {
                             "type": "string",
-                            "title": "Grade"
+                            "title": "Grades Participated"
                         },
                         "description": {
                             "type": "string",
                             "title": "Description"
                         }
-                    }
-                },
-            "order": [
-                "name", "grade", "description"
-            ]
+                    },
+                    "order": [
+                        "name", "grade", "description"
+                    ]
+                }
         }
     }
