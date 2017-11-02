@@ -12,15 +12,21 @@ class JSONListFieldSchemas:
                 "type": "object",
                 "properties": {
                     "exam": {
-                        "type": "string"
+                        "type": "string",
+                        "title": "Exam"
                     },
                     "score": {
                         "type": "integer",
                         "minimum": 1,
-                        "maximum": 5
+                        "maximum": 5,
+                        "title": "Score"
                     }
                 },
                 "required": [
+                    "exam",
+                    "score"
+                ],
+                "order": [
                     "exam",
                     "score"
                 ]
@@ -32,16 +38,22 @@ class JSONListFieldSchemas:
                 {
                     "type": "object",
                     "properties": {
-                        "Name": {
-                            "type": "string"
+                        "name": {
+                            "type": "string",
+                            "title": "Name"
                         },
-                        "Grades participated": {
-                            "type": "string"
+                        "grade": {
+                            "type": "string",
+                            "title": "Grade"
                         },
-                        "Description": {
-                            "type": "string"
+                        "description": {
+                            "type": "string",
+                            "title": "Description"
                         }
                     }
-                }
+                },
+            "order": [
+                "name", "grade", "description"
+            ]
         }
     }

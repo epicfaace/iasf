@@ -11,7 +11,8 @@ function parseSchemas() {
                 var tableHeadRow = "<tr>";
                 var tableBodyRow = "<tr>";
                 for (var property in properties) {
-                    tableHeadRow += "<th>" + property + "</th>";
+                    var propertyTitle = (properties[property].title ? properties[property].title: property); // If "title" attribute of object is defined, let the title be this.
+                    tableHeadRow += "<th>" + propertyTitle + "</th>";
                     var inputType = getInputTypeFromSchema(properties[property].type);
                     tableBodyRow += "<td><input type='" + inputType + "' class='form-control form-control-sm' name='"+ property +"'></td>";
                 }
@@ -144,7 +145,7 @@ $(function() {
         /* 
         todo: add on before leave to see
         todo: only save if data has changed.
-        
+
         $(window).bind('beforeunload', function(){
             return 'Are you sure you want to leave?';
         });
