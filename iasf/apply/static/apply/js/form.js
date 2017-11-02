@@ -106,24 +106,39 @@ function serializeJSONFields() {
 $(function() {
     parseSchemas();
 
-    // when button save clicked, submit the form.
-    $(".btnSave").click(function() {
-        $form = $("form.applicationForm");
-        serializeJSONFields();
-        console.log($("form.applicationForm").find("textarea.JSONFieldValue").val());
-        $form.submit();
-    });
-
-    // when page link clicked, first submit the current form.
+    // When all links (including button save, etc. clicked, submit the form by ajax and then redirect to appropriate url.
     $("a.pageLink, a").click(function(e) {
         $(".overlay").show();
         e.preventDefault();
         var url = $(this).attr("href");
-        var $form = $(".applicationForm");
-        $.post("", $form.serialize()).success(function() {
+        var $form = $("form.applicationForm");
+        serializeJSONFields();
+        $.post("", $form.serialize()).success(function(data) {
             window.location.href = url;
-        }).fail(function() {
-            alert("There was an error submitting the form. Please fix the errors and try again.");
+        }).fail(function(xhr) {
+            var errorDialogText = "There was an error submitting the form. Please fix the errors and try again.";
+            errorDialogText += "<br><br>";
+            try {
+                var errors = JSON.parse(xhr.responseText);
+                console.log(errors);
+                $addRowButton.find(":input").popover('hide');
+                for (var inputName in errors) {
+                    var message = errors[inputName].join(", ");
+                    errorDialogText += "<span class=errorTextDialog>" + inputName + ": </span>";
+                    errorDialogText += "<span class=errorMessageDialog>" + message + "</span>";
+                    errorDialogText += "<br>";
+                    $form.find(":input:visible[name='" + inputName + "'], table:visible[data-name='" + inputName + "']").popover({title: "Error", content: message}).popover('show');
+                }
+            }
+            catch (e) {
+                // JSON error not parsed successfully.
+                console.error(e);
+                errorDialogText += "Error could not be parsed.<br>" + xhr.responseText;
+            }
+
+            var $modal = $(".modalError");
+            $modal.find(".modal-body").html(errorDialogText);
+            $modal.modal();
             $(".overlay").hide();
         });
     });
