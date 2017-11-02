@@ -10,17 +10,20 @@ class JSONListFieldSchemas:
             "type": "array",
             "items": {
                 "type": "object",
-                        "properties": {
-                        "exam": {
-                            "type": "string"
-                        },
-                        "score": {
-                            "type": "integer",
-                            "minimum": "1",
-                            "maximum": "5",
-                            "required": False
-                        }
-                        }
+                "properties": {
+                    "exam": {
+                        "type": "string"
+                    },
+                    "score": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 5
+                    }
+                },
+                "required": [
+                    "exam",
+                    "score"
+                ]
             }
         },
         "activities": {

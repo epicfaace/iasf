@@ -4,6 +4,9 @@ from django.conf import settings
 from django.contrib.auth.forms import UserCreationForm
 
 class SignupForm(UserCreationForm):
+    """
+    Form used to create a new account.
+    """
     class Meta(UserCreationForm.Meta):
         fields = ['username', 'email', 'password1', 'password2']
     def __init__(self, *args, **kwargs):
