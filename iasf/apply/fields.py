@@ -16,13 +16,12 @@ class JSONSchemaField(JSONField):
         super(JSONSchemaField, self).__init__(*args, **kwargs)
 
     def clean(self, raw_value, model_instance):
-        #return super(JSONSchemaField, self).clean(raw_value, model_instance)
+        """ Validates JSON on the proper schema
+        (specified by self.name -- the field name serves as a key in the schemas dictionary)
+        """
         try:
-            # raw_value = [{"score": 1, "exam": "a"}]
-            jsonschema.validate(raw_value, JSONListFieldSchemas.schema['scores_ap'])
+            jsonschema.validate(raw_value, JSONListFieldSchemas.schema[self.name])
         except (jsonschema.ValidationError, jsonschema.SchemaError) as err:
-            print "ERROR"
-            print err
             raise forms.ValidationError(err.message)
         return super(JSONSchemaField, self).clean(raw_value, model_instance)
 

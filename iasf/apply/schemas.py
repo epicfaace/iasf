@@ -35,7 +35,7 @@ class JSONListFieldSchemas:
                         "Name": {
                             "type": "string"
                         },
-                        "Grades": {
+                        "Grades participated": {
                             "type": "string"
                         },
                         "Description": {

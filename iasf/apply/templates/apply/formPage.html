@@ -27,7 +27,7 @@
     <form method=POST action="" class="applicationForm">
         
         {% include 'apply/forms/form_as_fieldsets.html' %}
-        <a href="{% url 'apply:form-page' view.get_page_number %}">
+        <a id="save" href="{% url 'apply:form-page' view.get_page_number %}">
             <!-- Links to itself (same page). -->
             <button class="btn btn-lg btn-primary">Save</button>
         </a>

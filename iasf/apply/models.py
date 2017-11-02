@@ -64,13 +64,13 @@ Any additional documents (optional)
         {
             "name": "Essay",
             "fields": (
-                ("essay")
+                ("essay",)
             )
         },
         {
             "name": "Activities",
             "fields": (
-                ("activities")
+                ("activities",)
             )
         },
         {

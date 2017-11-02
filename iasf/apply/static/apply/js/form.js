@@ -116,7 +116,7 @@ $(function() {
         $.post("", $form.serialize()).success(function(data) {
             window.location.href = url;
         }).fail(function(xhr) {
-            var errorDialogText = "There was an error submitting the form. Please fix the errors and try again.";
+            var errorDialogText = "There was an error saving your data. Please fix the errors and try again.";
             errorDialogText += "<br><br>";
             try {
                 var errors = JSON.parse(xhr.responseText);
@@ -141,5 +141,13 @@ $(function() {
             $modal.modal();
             $(".overlay").hide();
         });
+        /* 
+        todo: add on before leave to see
+        todo: only save if data has changed.
+        
+        $(window).bind('beforeunload', function(){
+            return 'Are you sure you want to leave?';
+        });
+        */
     });
 });
