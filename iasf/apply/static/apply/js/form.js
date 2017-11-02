@@ -7,12 +7,13 @@ function parseSchemas() {
         for (var inputName in schemas) {
             $("form.applicationForm").find("textarea[name='"+inputName+"']").each(function() {
                 var $textarea = $(this).hide().addClass("JSONFieldValue");
-                var properties = schemas[inputName].items[0].properties;
+                var properties = schemas[inputName].items.properties;
                 var tableHeadRow = "<tr>";
                 var tableBodyRow = "<tr>";
                 for (var property in properties) {
                     tableHeadRow += "<th>" + property + "</th>";
-                    tableBodyRow += "<td><input type=text class='form-control form-control-sm' name='"+ property +"'></td>";
+                    var inputType = getInputTypeFromSchema(properties[property].type);
+                    tableBodyRow += "<td><input type='" + inputType + "' class='form-control form-control-sm' name='"+ property +"'></td>";
                 }
                 tableBodyRow += '<td><button type="button" class="btn btn-sm btn-danger deleteRowButton" aria-label="Left Align"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button></td>';
                 tableHeadRow += "</tr>";
@@ -35,7 +36,7 @@ function parseSchemas() {
                         var $finalRow = $table.find("tr").last();
                         for (var key in currentData[i]) {
                             var value = currentData[i][key];
-                            $finalRow.is("[name='" + key + "'").find(":input").val(value);
+                            $finalRow.find("input[name='" + key + "']").val(value);
                         }
                     }
                 }
@@ -50,6 +51,19 @@ function parseSchemas() {
         console.error(e);
         alert("An error occurred loading the form. Please contact us about the issue and/or try again later.");
     }
+}
+/* Gets input type; i.e., "text" for type "string" in schema,
+ * "number" for type "integer".
+ */
+function getInputTypeFromSchema(inputType) {
+    console.log(inputType);
+    switch (inputType) {
+        case "integer":
+            return "number";
+        case "string":
+            return "text";
+    }
+    return "text";
 }
 function addNewRow(tableBodyRow, $table) {
     // Event handler for clicking on the "Add New" button.
@@ -71,8 +85,17 @@ function serializeJSONFields() {
         $table.find("tr").not(':first').each(function() {
             var entry = {};
             $(this).find("td").each(function() {
-                var $input = $(this).find(":input");
-                entry[$input.attr("name")] = $input.val();
+                var $input = $(this).find("input");
+                if (!$input.length) {
+                    // if it's a button td.
+                    return;
+                }
+                var $inputVal = $input.val();
+                // handle number-inputs:
+                if ($input.attr('type') == 'number' && !isNaN($inputVal)) {
+                    $inputVal = parseInt($inputVal);
+                }
+                entry[$input.attr("name")] = $inputVal;
             });
             array.push(entry);
         });
@@ -87,6 +110,7 @@ $(function() {
     $(".btnSave").click(function() {
         $form = $("form.applicationForm");
         serializeJSONFields();
+        console.log($("form.applicationForm").find("textarea.JSONFieldValue").val());
         $form.submit();
     });
 

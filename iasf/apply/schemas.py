@@ -5,11 +5,12 @@ class JSONListFieldSchemas:
     """
     schema = {
         "scores_ap": {
+            "$schema": "http://json-schema.org/draft-06/schema#",
+            "title": "AP Scores",
             "type": "array",
-            "items": [
-                {
-                    "type": "object",
-                    "properties": {
+            "items": {
+                "type": "object",
+                        "properties": {
                         "exam": {
                             "type": "string"
                         },
@@ -19,13 +20,12 @@ class JSONListFieldSchemas:
                             "maximum": "5",
                             "required": False
                         }
-                    }
-                }
-            ]
+                        }
+            }
         },
         "activities": {
             "type": "array",
-            "items": [
+            "items":
                 {
                     "type": "object",
                     "properties": {
@@ -40,6 +40,5 @@ class JSONListFieldSchemas:
                         }
                     }
                 }
-            ]
         }
     }

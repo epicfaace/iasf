@@ -1,6 +1,6 @@
 from django.forms import fields
 from django import forms
-import validictory
+from jsonschema import validate, SchemaError
 from django.contrib.postgres.fields import JSONField
 import json
 from .schemas import JSONListFieldSchemas
@@ -17,11 +17,13 @@ class JSONSchemaField(JSONField):
         super(JSONSchemaField, self).__init__(*args, **kwargs)
 
     def clean(self, raw_value, model_instance):
+        return super(JSONSchemaField, self).clean(raw_value, model_instance)
         try:
-            validictory.validate(raw_value, JSONListFieldSchemas.schema['scores_ap'])
-        except (validictory.FieldValidationError,
-                validictory.SchemaError,
-                validictory.validator.RequiredFieldValidationError) as err:
+            # raw_value = [{"score": 1, "exam": "a"}]
+            validate(raw_value, JSONListFieldSchemas.schema['scores_ap'])
+        except (ValidationError, SchemaError) as err:
+            print "ERROR"
+            print err
             raise ValidationError(err)
         return super(JSONSchemaField, self).clean(raw_value, model_instance)
 
