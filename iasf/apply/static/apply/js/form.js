@@ -17,8 +17,8 @@ function parseSchemas() {
                     console.log(property);
                     var propertyTitle = (properties[property].title ? properties[property].title: property); // If "title" attribute of object is defined, let the title be this.
                     tableHeadRow += "<th>" + propertyTitle + "</th>";
-                    var inputType = getInputTypeFromSchema(properties[property].type);
-                    tableBodyRow += "<td><input type='" + inputType + "' class='form-control form-control-sm' name='"+ property +"'></td>";
+                    var input = createInput(properties[property].type, properties[property].format, property);
+                    tableBodyRow += "<td>" + input + "</td>";
                 }
                 tableBodyRow += '<td><button type="button" class="btn btn-sm btn-danger deleteRowButton" aria-label="Left Align"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button></td>';
                 tableHeadRow += "</tr>";
@@ -41,7 +41,7 @@ function parseSchemas() {
                         var $finalRow = $table.find("tr").last();
                         for (var key in currentData[i]) {
                             var value = currentData[i][key];
-                            $finalRow.find("input[name='" + key + "']").val(value);
+                            $finalRow.find(":input:visible[name='" + key + "']").val(value);
                         }
                     }
                 }
@@ -70,6 +70,23 @@ function getInputTypeFromSchema(inputType) {
     }
     return "text";
 }
+/* Creates input HTML based on input format and name.
+ */
+function createInput(type, format, name) {
+    if (format) type = format; // if format is there, override the type.
+    switch (type) {
+        case "textarea":
+            return "<textarea class='form-control form-control-sm' name='"+ name +"'></textarea>";
+        case "integer":
+            return "<input type=number class='form-control form-control-sm' name='"+ name +"'>";
+        case "string":
+        default:
+            return "<input type=text class='form-control form-control-sm' name='"+ name +"'>";
+    }
+    
+}
+
+
 function addNewRow(tableBodyRow, $table) {
     // Event handler for clicking on the "Add New" button.
     // Also attaches delete row event handler to "delete row" button.
@@ -90,7 +107,7 @@ function serializeJSONFields() {
         $table.find("tr").not(':first').each(function() {
             var entry = {};
             $(this).find("td").each(function() {
-                var $input = $(this).find("input");
+                var $input = $(this).find(":input:visible");
                 if (!$input.length) {
                     // if it's a button td.
                     return;

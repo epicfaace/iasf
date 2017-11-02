@@ -48,7 +48,8 @@ class JSONListFieldSchemas:
                         },
                         "description": {
                             "type": "string",
-                            "title": "Description"
+                            "title": "Description",
+                            "format": "textarea"
                         }
                     },
                     "order": [
