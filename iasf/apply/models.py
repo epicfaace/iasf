@@ -74,6 +74,13 @@ Any additional documents (optional)
             )
         },
         {
+            "name": "Upload Files",
+            "submitAjax": True,
+            "fields": (
+                ("file_resume",)
+            )
+        },
+        {
             "name": "Financial Information",
             "fields": (
                 ("")
@@ -149,11 +156,14 @@ Any additional documents (optional)
 
     # PAGE 3: ESSAY
     essay = models.TextField(blank=True, null=True)
-
+    
     # PAGE 4: ACTIVITIES
     activities = JSONListSchemaField(name='activities', blank=True, null=True)
 
-    # PAGE 4: FINANCIAL INFORMATION
+    # PAGE 5: UPLOAD FILES:
+    file_resume = models.FileField(blank=True, null=True)
+
+    # PAGE 6: FINANCIAL INFORMATION
     income_parent = models.IntegerField(blank=True, null=True)
     income_student = models.IntegerField(blank=True, null=True)
     list_dependents = JSONField(_("List of dependents currently entering college"), blank=True, null=True) # todo: jsonfield.
@@ -178,3 +188,8 @@ Any additional documents (optional)
     @classmethod
     def getFields(self, number):
         return self.pages[number]["fields"];
+    @classmethod
+    def getShouldSubmitAjax(self, number):
+        if ("submitAjax" in self.pages[number]):
+            return self.pages[number]["submitAjax"]
+        return False

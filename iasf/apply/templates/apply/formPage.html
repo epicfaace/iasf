@@ -24,7 +24,7 @@
 </ul>
 
 <div class="col-xs-12 col-sm-8">
-    <form method=POST action="" class="applicationForm">
+    <form method=POST {%if view.get_should_submit_ajax %}enctype="multipart/form-data" data-shouldSubmitAjax="false"{% endif %} action="" class="applicationForm">
         
         {% include 'apply/forms/form_as_fieldsets.html' %}
         <a id="save" href="{% url 'apply:form-page' view.get_page_number %}">

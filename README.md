@@ -22,3 +22,7 @@ python manage.py runserver
 pip freeze > requirements.txt
 python manage.py runserver ...
 ```
+
+# Deployment information
+Azure + PostgreSQL
+Uses Azure blob storage

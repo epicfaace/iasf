@@ -52,4 +52,8 @@ class FormPage(AjaxableResponseMixin, UpdateView):
         """Returns current page number, used by the template.
         """
         return int(self.kwargs['step'])
-    
+    def get_should_submit_ajax(self):
+        """Should it submit through ajax? This is always true
+        except in the case of the page with file uploads, in which it is false.
+        """
+        return Application.getShouldSubmitAjax(int(self.kwargs['step']))

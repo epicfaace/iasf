@@ -135,6 +135,12 @@ $(function() {
         var url = $(this).attr("href");
         var $form = $("form.applicationForm");
         serializeJSONFields();
+        if ($form.attr("data-shouldSubmitAjax") == "false") {
+            // For file upload fields -- can't submit files over ajax, so just submit normally.
+            $form.submit();
+            return;
+        }
+
         $.post("", $form.serialize()).success(function(data) {
             window.location.href = url;
         }).fail(function(xhr) {

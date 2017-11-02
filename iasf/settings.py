@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
+from secret import DB_NAME, DB_KEY
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -31,6 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'storages',
     'betterforms',
     'iasf.accounts',
     'iasf.pages',
@@ -137,3 +139,8 @@ STATICFILES_DIRS = [
 
 LOGIN_REDIRECT_URL = '/apply'
 LOGOUT_REDIRECT_URL = '/apply'
+
+DEFAULT_FILE_STORAGE = 'storages.backends.azure_storage.AzureStorage'
+AZURE_ACCOUNT_NAME = DB_NAME
+AZURE_ACCOUNT_KEY = DB_KEY
+AZURE_CONTAINER = "applicationfiles"
