@@ -126,14 +126,33 @@ function serializeJSONFields() {
 }
 
 $(function() {
+    // Form change script.
+    $.fn.extend({
+        trackChanges: function() {
+          $(":input",this).change(function() {
+             $(this.form).data("changed", true);
+          });
+        }
+        ,
+        isChanged: function() { 
+          return this.data("changed"); 
+        }
+    });
+    $("form.applicationForm").trackChanges();
+
     parseSchemas();
 
     // When all links (including button save, etc. clicked, submit the form by ajax and then redirect to appropriate url.
     $("a.pageLink, a").click(function(e) {
-        $(".overlay").show();
-        e.preventDefault();
         var url = $(this).attr("href");
         var $form = $("form.applicationForm");
+        $(".overlay").show();
+        if (!$form.isChanged() && $(this).attr("id") != "save") {
+            // If data has not changed, don't submit the form (UNLESS you're clicking the "save" button.)
+            $(".overlay").removeClass("saving");
+            return true;
+        }
+        e.preventDefault();
         serializeJSONFields();
         if ($form.attr("data-shouldSubmitAjax") == "false") {
             // For file upload fields -- can't submit files over ajax, so just submit normally.
