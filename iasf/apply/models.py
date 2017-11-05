@@ -162,6 +162,9 @@ Any additional documents (optional)
 
     # PAGE 5: UPLOAD FILES:
     file_resume = models.FileField(blank=True, null=True)
+    file_sat_scores = models.FileField(blank=True, null=True)
+    file_act_scores = models.FileField(blank=True, null=True)
+    
 
     # PAGE 6: FINANCIAL INFORMATION
     income_parent = models.IntegerField(blank=True, null=True)
