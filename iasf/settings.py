@@ -82,11 +82,11 @@ WSGI_APPLICATION = 'iasf.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'iasf',                      # Or path to database file if using sqlite3.
-        'USER': 'test',                      # Not used with sqlite3.
-        'PASSWORD': 'test',                  # Not used with sqlite3.
-        'HOST': 'localhost',                      # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '5432',                      # Set to empty string for default. Not used with sqlite3.
+        'NAME': os.environ.get('DATABASENAME', 'iasf'),
+        'USER': os.environ.get('DATABASEUSER', 'test'),
+        'PASSWORD': os.environ.get('DATABASEPASSWORD', 'test'),
+        'HOST': os.environ.get('DATABASEHOST', 'localhost'),
+        'PORT': os.environ.get('DATABASEPORT', '5432'),
     },
     'sqlite3': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -141,6 +141,6 @@ LOGIN_REDIRECT_URL = '/apply'
 LOGOUT_REDIRECT_URL = '/apply'
 
 DEFAULT_FILE_STORAGE = 'storages.backends.azure_storage.AzureStorage'
-AZURE_ACCOUNT_NAME = DB_NAME
-AZURE_ACCOUNT_KEY = DB_KEY
-AZURE_CONTAINER = "applicationfiles"
+AZURE_ACCOUNT_NAME = os.environ.get('AZURE_ACCOUNT_NAME', DB_NAME)
+AZURE_ACCOUNT_KEY = os.environ.get('AZURE_ACCOUNT_KEY', DB_KEY)
+AZURE_CONTAINER = os.environ.get('AZURE_ACCOUNT_KEY', 'applicationfiles')
