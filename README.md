@@ -26,3 +26,5 @@ python manage.py runserver ...
 # Deployment information
 Azure + PostgreSQL
 Uses Azure blob storage
+
+More info about deploying to azure: https://docs.microsoft.com/en-us/azure/app-service/web-sites-python-configure
