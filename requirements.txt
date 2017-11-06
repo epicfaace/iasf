@@ -69,3 +69,4 @@ scandir==1.6
 six==1.11.0
 urllib3==1.22
 validictory==1.1.1
+wfastcgi==3.0.0
